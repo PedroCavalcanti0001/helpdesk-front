@@ -4,8 +4,8 @@
 
 .sidenav{
     width: 13rem;
-    background: rgb(240,60,155);
-    background: linear-gradient(169deg, rgba(240,60,155,1) 0%, rgba(128,0,68,1) 94%);
+    background: rgb(60,173,240);
+    background: linear-gradient(169deg, rgba(60,173,240,1) 0%, rgba(10,128,221,1) 94%);
 }
 
 img{
@@ -25,6 +25,6 @@ img{
 .menu{
     margin: 1rem 0 0 1rem;
     color: white;
-    background: rgb(240,60,155);
-    background: linear-gradient(169deg, rgba(240,60,155,1) 0%, rgba(128,0,68,1) 94%);
+    background: rgb(60,173,240);
+    background: linear-gradient(169deg, rgba(60,173,240,1) 0%, rgba(10,128,221,1) 94%);
 }
