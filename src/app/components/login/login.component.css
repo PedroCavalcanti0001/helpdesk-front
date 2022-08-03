@@ -1,0 +1,64 @@
+.container {
+    height: 100%;
+    background: radial-gradient(circle, rgba(4, 125, 197, 1) 33%, rgba(4, 125, 197, 1) 72%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    width: 30rem;
+    margin: auto;
+    background-color: rgb(235, 235, 235);
+    padding: 4rem 1rem;
+    border-radius: 1rem;
+    text-decoration-color: #155724;
+}
+
+.full-width {
+    width: 350px;
+    font-size: 14px;
+    margin-bottom: -15px;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    height: 15rem;
+    width: 100%;
+    margin: 1.5rem auto 1.5rem auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+button {
+    margin-top: 1.5rem;
+    background-color: dodgerblue;
+}
+
+.mat-form-field{
+    -webkit-text-fill-color: dodgerblue;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: dodgerblue;
+}
+/* default and hover color */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: dodgerblue;
+}
+
+/* focused color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: lightblue;
+}
+
+/* floating label color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+    color: lightblue;
+}
