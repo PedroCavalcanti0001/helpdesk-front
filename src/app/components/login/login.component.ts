@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Credenciais} from "../../models/credenciais";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+    creds: Credenciais = {
+        email: '',
+        senha: ''
+    }
 
-  ngOnInit(): void {
-  }
+    email = new FormControl(null, Validators.email);
+    senha = new FormControl(null, Validators.minLength(3));
 
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
+
+
+    validaCampos():Boolean{
+        return this.email.valid && this.senha.valid;
+    }
 }
