@@ -33,6 +33,7 @@ import {LoginComponent} from './components/login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ToastrModule} from "ngx-toastr";
+import {AuthInterceptorProvider} from "./interceptors/auth.interceptor";
 
 @NgModule({
     declarations: [
@@ -70,10 +71,10 @@ import {ToastrModule} from "ngx-toastr";
         ToastrModule.forRoot({
             timeOut: 4000,
             closeButton: true,
-            progressBar:true
+            progressBar: true
         })
     ],
-    providers: [],
+    providers: [AuthInterceptorProvider],
     bootstrap: [AppComponent]
 })
 export class AppModule {
