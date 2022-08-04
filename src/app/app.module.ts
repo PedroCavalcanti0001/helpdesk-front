@@ -34,6 +34,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ToastrModule} from "ngx-toastr";
 import {AuthInterceptorProvider} from "./interceptors/auth.interceptor";
+import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import {AuthInterceptorProvider} from "./interceptors/auth.interceptor";
         HomeComponent,
         HeaderComponent,
         TecnicoListComponent,
-        LoginComponent
+        LoginComponent,
+        TecnicoCreateComponent
     ],
     imports: [
         BrowserModule,
