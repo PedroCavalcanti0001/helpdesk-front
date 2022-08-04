@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {Tecnico} from "../../../models/tecnico";
+import {TecnicoService} from "../../../services/tecnico.service";
 
 @Component({
     selector: 'app-tecnico-list',
@@ -9,29 +10,33 @@ import {Tecnico} from "../../../models/tecnico";
     styleUrls: ['./tecnico-list.component.css']
 })
 export class TecnicoListComponent implements OnInit {
-    ELEMENT_DATA: Tecnico[] = [
-        {
-            id: 1,
-            nome: "Pedro Eugenio",
-            cpf: "123",
-            email: "pedro@gmail.com",
-            senha: "1234",
-            perfis: ['0'],
-            dataCriacao: "27/05/2005"
-        }
-    ];
-s
+    ELEMENT_DATA: Tecnico[] = [];
+    s
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
     dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor() {
+    constructor(private service: TecnicoService) {
     }
 
     ngOnInit(): void {
+        this.findAll();
     }
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+    findAll() {
+        this.service.findAll().subscribe(resposta => {
+            this.ELEMENT_DATA = resposta;
+            this.dataSource = new MatTableDataSource<Tecnico>(resposta);
+            this.dataSource.paginator = this.paginator;
+        });
+    }
+
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+
+        if (this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+        }
     }
 }
