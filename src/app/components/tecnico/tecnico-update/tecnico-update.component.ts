@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
+import {Tecnico} from "../../../models/tecnico";
 import {FormControl, Validators} from "@angular/forms";
 import {TecnicoService} from "../../../services/tecnico.service";
-import {Tecnico} from "../../../models/tecnico";
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-    selector: 'app-tecnico-create',
-    templateUrl: './tecnico-create.component.html',
-    styleUrls: ['./tecnico-create.component.css']
+    selector: 'app-tecnico-update',
+    templateUrl: './tecnico-update.component.html',
+    styleUrls: ['./tecnico-update.component.css']
 })
-export class TecnicoCreateComponent implements OnInit {
+export class TecnicoUpdateComponent implements OnInit {
+
 
     tecnico: Tecnico = {
         id: '',
@@ -29,24 +30,34 @@ export class TecnicoCreateComponent implements OnInit {
 
     constructor(private service: TecnicoService,
                 private toast: ToastrService,
-                private router:Router) {
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.tecnico.id = this.route.snapshot.paramMap.get("id");
+        this.findById();
     }
 
-    create(): void {
-        this.service.create(this.tecnico).subscribe(resposta => {
-                this.toast.success("Técnico cadastrado com sucesso!", "Cadastro");
+    findById(): void {
+        this.service.findById(this.tecnico.id).subscribe(resposta => {
+            resposta.perfils = [];
+            this.tecnico = resposta;
+        });
+    }
+
+    update(): void {
+        this.service.update(this.tecnico).subscribe(resposta => {
+                this.toast.success("Técnico atualizado com sucesso!", "Update");
                 this.router.navigate(["tecnicos"]);
             },
             ex => {
                 console.log(ex);
-                if(ex.error.errors){
-                    ex.error.errors.forEach(element =>{
-                       this.toast.error(element.message);
+                if (ex.error.errors) {
+                    ex.error.errors.forEach(element => {
+                        this.toast.error(element.message);
                     });
-                }else{
+                } else {
                     this.toast.error(ex.error.message);
                 }
             }
