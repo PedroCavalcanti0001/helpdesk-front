@@ -11,7 +11,7 @@ import {ClienteService} from "../../../services/cliente.service";
 })
 export class ClienteListComponent implements OnInit {
     ELEMENT_DATA: Cliente[] = [];
-    s
+
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
     dataSource = new MatTableDataSource<Cliente>(this.ELEMENT_DATA);
     @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -12,7 +12,7 @@ import {timeout} from "rxjs/operators";
 export class NavComponent implements OnInit {
 
   constructor(private router:Router, private authService:AuthService, private toast:ToastrService) {
-    this.router.navigate(["tecnicos"])
+    this.router.navigate(["chamados"])
   }
 
   ngOnInit(): void {
