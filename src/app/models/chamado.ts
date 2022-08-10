@@ -5,7 +5,7 @@ export interface Chamado {
     prioridade?: String;
     status: String;
     titulo: String;
-    descricao: String;
+    observacoes: String;
     tecnico: any;
     cliente: any;
     nomeCliente: String;
