@@ -3,6 +3,7 @@ import {Chamado} from "../../../models/chamado";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {ChamadoService} from "../../../services/chamado.service";
+import {MatRadioChange} from "@angular/material/radio";
 
 @Component({
     selector: 'app-chamado-list',
@@ -13,7 +14,6 @@ export class ChamadoListComponent implements OnInit {
 
     ELEMENT_DATA: Chamado[] = [];
     FILTERED_DATA: Chamado[] = [];
-
     displayedColumns: string[] = ['id', 'titulo', 'cliente', "tecnico", 'dataAbertura', 'status', "prioridade", "acoes",];
     dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
 
@@ -66,6 +66,12 @@ export class ChamadoListComponent implements OnInit {
     }
 
     orderByStatus(status: any): void {
+        if(this.FILTERED_DATA.length != 0){
+            this.dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
+            this.dataSource.paginator = this.paginator;
+            this.FILTERED_DATA = [];
+            return;
+        }
         let list: Chamado[] = []
         this.ELEMENT_DATA.forEach(element =>{
             if(element.status == status){
