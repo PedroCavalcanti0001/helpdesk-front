@@ -1,1 +1,86 @@
-<p>chamado-read works!</p>
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Leitura de chamado</h1>
+    <img class="full-width" src="assets/img/chamado-create.svg" alt="Chamado image">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Título de chamado</mat-label>
+        <input
+                required
+                matInput
+                [(ngModel)]="chamado.titulo"
+                disabled
+                name="titulo"
+        >
+    </mat-form-field>
+
+    <div class="status-prioridade">
+        <mat-form-field appearance="outline">
+            <mat-label>STATUS ({{retornaStatus(chamado.status)}})</mat-label>
+            <mat-select
+                    [(ngModel)]="chamado.status"
+                    name="status"
+                    disabled
+                    required>
+                <mat-option value="0">ABERTO</mat-option>
+                <mat-option value="1">EM ANDAMENTO</mat-option>
+                <mat-option value="2">ENCERRADO</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>PRIORIDADE ({{retornaPrioridade(chamado.prioridade)}})</mat-label>
+            <mat-select
+                    [(ngModel)]="chamado.prioridade"
+                    name="prioridade"
+                    disabled
+                    required>
+                <mat-option value="0">BAIXA</mat-option>
+                <mat-option value="1">MÉDIA</mat-option>
+                <mat-option value="2">ALTA</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="tecnico">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>TÉCNICO ({{chamado.nomeTecnico}})</mat-label>
+            <mat-select
+                    disabled
+                    [(ngModel)]="chamado.tecnico"
+                    name="tecnico"
+                    required>
+                <mat-option>{{chamado.nomeTecnico}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="cliente">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>CLIENTE ({{chamado.nomeCliente}})</mat-label>
+            <mat-select
+                    disabled
+                    [(ngModel)]="chamado.cliente"
+                    name="cliente"
+                    required>
+                <mat-option>{{chamado.nomeCliente}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Deixe uma observação</mat-label>
+            <textarea
+                    required
+                    disabled
+                    matInput
+                    [(ngModel)]="chamado.observacoes"
+                    name="observacoes"
+                    class="observacoes"
+            ></textarea>
+        </mat-form-field>
+    </form>
+
+    <button class="full-width mat-elevation-z4" mat-stroked-button color="warn" routerLink="../../">Retornar</button>
+
+    <p class="full-width">Desenvolvido por Pedro Cavalcanti</p>
+</div>
